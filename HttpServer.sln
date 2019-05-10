@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer", "HttpServer\HttpServer.csproj", "{57FFA739-E9A5-4F20-809A-115E0F56A26A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpServer.Core", "HttpServer.Core\HttpServer.Core.csproj", "{2A9C1502-E0A2-42A9-ABD6-04F5F1C453EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57FFA739-E9A5-4F20-809A-115E0F56A26A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57FFA739-E9A5-4F20-809A-115E0F56A26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57FFA739-E9A5-4F20-809A-115E0F56A26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57FFA739-E9A5-4F20-809A-115E0F56A26A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A9C1502-E0A2-42A9-ABD6-04F5F1C453EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A9C1502-E0A2-42A9-ABD6-04F5F1C453EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A9C1502-E0A2-42A9-ABD6-04F5F1C453EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A9C1502-E0A2-42A9-ABD6-04F5F1C453EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73FE3BAC-4A57-423D-AB7E-9B796C29F2F5}
+	EndGlobalSection
+EndGlobal
