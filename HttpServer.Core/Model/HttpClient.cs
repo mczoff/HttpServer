@@ -12,7 +12,6 @@ namespace HTTPServer.Core.Model
         : IHttpClient
     {
         readonly TcpClient _tcpClient;
-        readonly NetworkStream _networkStream;
 
         public HttpClient(TcpClient client)
         {
