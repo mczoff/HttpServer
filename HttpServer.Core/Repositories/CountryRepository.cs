@@ -3,37 +3,36 @@ using HTTPServer.Core.Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HTTPServer.Core.Contexts;
 
 namespace HTTPServer.Core.Repositories
 {
     public class CountryRepository
         : IRepository<int, Country>
     {
-        List<Country> _countries;
+        private DatabaseContext _databaseContext;
 
         public CountryRepository()
         {
-            _countries = new List<Country> { new Country { Id = 0, Name = "Russian" }, new Country { Id = 1, Name = "Ukraine" } };
+            _databaseContext = new DatabaseContext();
         }
 
         public void Create(Country item)
-            => _countries.Add(item);
+            => _databaseContext.Countries.Add(item);
 
         public void Delete(int id)
-            => _countries.RemoveAt(id);
+            => _databaseContext.Countries.Remove(new Country { Id = id });
 
         public Country Get(int id)
-            => _countries.ElementAt(id);
+            => _databaseContext.Countries.Find(id);
 
         public IEnumerable<Country> GetList()
-            => _countries.AsEnumerable();
+            => _databaseContext.Countries.ToList();
 
         public void Save()
-            => throw new NotSupportedException();
+            => _databaseContext.SaveChanges();
 
         public void Update(Country item)
-            => _countries.ElementAt(item.Id).Name = item.Name;
+            => _databaseContext.Countries.ElementAt(item.Id).Name = item.Name;
     }
 }

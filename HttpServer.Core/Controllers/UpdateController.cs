@@ -27,19 +27,19 @@ namespace HTTPServer.Core.Controllers
         }
 
         [Page(@"[0-9]+")]
-        public IHttpJsonResponse Post(string table, int i, [PostData]string data)
+        public IHttpJsonResponse Post(string table, int i, [PostData]PostModel postModel)
         {
             switch (table)
             {
                 case "countries":
-                    Country country = JsonConvert.DeserializeObject<Country>(data);
+                    Country country = JsonConvert.DeserializeObject<Country>(Encoding.UTF8.GetString(postModel.Data));
                     if (i != country.Id)
                         throw new HttpStatusCodeException(HttpStatusCode.BadRequest);
 
                     _countryRepository.Update(country);
                     break;
                 case "peoples":
-                    People people = JsonConvert.DeserializeObject<People>(data);
+                    People people = JsonConvert.DeserializeObject<People>(Encoding.UTF8.GetString(postModel.Data));
                     if (i != people.Id)
                         throw new HttpStatusCodeException(HttpStatusCode.BadRequest);
 

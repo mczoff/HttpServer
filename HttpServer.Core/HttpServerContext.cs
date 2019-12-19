@@ -15,7 +15,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using HTTPServer.Core.Model;
 using HttpClient = HTTPServer.Core.Model.HttpClient;
 
 namespace HTTPServer.Core
@@ -66,6 +66,7 @@ namespace HTTPServer.Core
             HttpListenerRequest request = context.Request;
             HttpListenerResponse response = context.Response;
 
+            
             string controllerName = request.Url.Segments[1].Replace("/", "");
 
             string[] urlParams = request.Url.Segments.Skip(2).Select(s => s.Replace("/", "")).ToArray();
@@ -112,7 +113,7 @@ namespace HTTPServer.Core
             output.Close();
         }
 
-        private static object[] GenerateParams(string[] urlParams, MethodInfo method, string postdata = "")
+        private static object[] GenerateParams(string[] urlParams, MethodInfo method, PostModel postdata = null)
         {
             try
             {
@@ -144,7 +145,7 @@ namespace HTTPServer.Core
             return controllerType;
         }
 
-        public static string GetRequestPostData(HttpListenerRequest request)
+        private static PostModel GetRequestPostData(HttpListenerRequest request)
         {
             if (!request.HasEntityBody)
             {
@@ -154,7 +155,7 @@ namespace HTTPServer.Core
             {
                 using (System.IO.StreamReader reader = new System.IO.StreamReader(body, request.ContentEncoding))
                 {
-                    return reader.ReadToEnd();
+                    return new PostModel { Data = Encoding.UTF8.GetBytes(reader.ReadToEnd()), AdditionalParts = new Dictionary<string, string> { {"ContentType", request.ContentType }}};
                 }
             }
         }
